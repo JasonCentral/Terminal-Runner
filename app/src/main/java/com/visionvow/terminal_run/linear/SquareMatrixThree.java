@@ -1,5 +1,8 @@
 package com.visionvow.terminal_run.linear;
 
+import com.visionvow.terminal_run.exceptions.NotInvertibleException;
+import com.visionvow.terminal_run.exceptions.WrongDimensionException;
+
 import java.util.ArrayList;
 
 public class SquareMatrixThree implements Matrix {
@@ -39,11 +42,11 @@ public class SquareMatrixThree implements Matrix {
      * @param v1 The first vector in R^3, to make the first column
      * @param v2 The second vector in R^3, to make the second column
      * @param v3 The third vector in R^3, to make the third column
-     * @throws ArithmeticException If any of the vectors are not in R^3
+     * @throws WrongDimensionException If any of the vectors are not in R^3
      */
     public SquareMatrixThree(Vector v1, Vector v2, Vector v3) {
         if (v1.getNumRows() != 3 || v2.getNumRows() != 3 || v3.getNumRows() != 3) {
-            throw new ArithmeticException("Vectors are not of the right dimension");
+            throw new WrongDimensionException("Vectors are not of the right dimension");
         }
         values = new double[3][3];
         values[0][0] = v1.getRow(1);
@@ -118,7 +121,7 @@ public class SquareMatrixThree implements Matrix {
     public SquareMatrixThree getInverse() {
         double determinant = getDeterminant();
         if (determinant == 0) {
-            throw new ArithmeticException("3x3 not invertible");
+            throw new NotInvertibleException();
         }
         double detReciprocal = 1 / determinant;
         //Get values of adjugate matrix
@@ -160,7 +163,7 @@ public class SquareMatrixThree implements Matrix {
     @Override
     public Vector getVectorProduct(Vector v) {
         if (!canVectorProduct(v)) {
-            throw new ArithmeticException("Vector Product 3x3 failed");
+            throw new WrongDimensionException("Vector Product 3x3 failed");
         }
         // Get new vector values
         double a1 = v.getRow(1) * values[0][0] + v.getRow(2) * values[0][1]
@@ -175,7 +178,7 @@ public class SquareMatrixThree implements Matrix {
     @Override
     public SquareMatrixThree rightMatrixProduct(Matrix m) {
         if (m.getNumRows() != 3) {
-            throw new ArithmeticException("Failed Matrix Product with 3x3 on left");
+            throw new WrongDimensionException("Failed Matrix Product with 3x3 on left");
         }
         Vector v1 = getVectorProduct(m.getColumn(1));
         Vector v2 = getVectorProduct(m.getColumn(2));

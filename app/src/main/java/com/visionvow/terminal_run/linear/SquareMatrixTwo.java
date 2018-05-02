@@ -1,5 +1,7 @@
 package com.visionvow.terminal_run.linear;
 
+import com.visionvow.terminal_run.exceptions.*;
+
 /**
  * A 2 by 2 square matrix
  */
@@ -26,11 +28,11 @@ public class SquareMatrixTwo implements Matrix {
      *
      * @param v1 The first vector in R^22, to make the first column
      * @param v2 The second vector in R^2, to make the second column
-     * @throws ArithmeticException If either of the vectors are not in R^2
+     * @throws WrongDimensionException If either of the vectors are not in R^2
      */
     public SquareMatrixTwo(Vector v1, Vector v2) {
         if (v1.getNumRows() != 2 || v2.getNumRows() != 2){
-            throw new ArithmeticException();
+            throw new WrongDimensionException();
         }
         this.a = v1.getRow(1);
         this.c = v1.getRow(2);
@@ -52,7 +54,7 @@ public class SquareMatrixTwo implements Matrix {
     public SquareMatrixTwo getInverse() {
         double determinant = getDeterminant();
         if (determinant == 0) {
-            throw new ArithmeticException("Not Invertible!");
+            throw new NotInvertibleException();
         }
         double detReciprocal = 1 / determinant;
         return multiplyByScalar(detReciprocal);
@@ -66,7 +68,7 @@ public class SquareMatrixTwo implements Matrix {
     @Override
     public Vector getVectorProduct(Vector v) {
         if (!canVectorProduct(v)) {
-            throw new ArithmeticException("Failed Vector Product!");
+            throw new WrongDimensionException("Failed Vector Product!");
         }
         double a1 = a * v.getRow(1) + b * v.getRow(2);
         double a2 = c * v.getRow(1) + b * v.getRow(2);
@@ -99,7 +101,7 @@ public class SquareMatrixTwo implements Matrix {
     @Override
     public SquareMatrixTwo rightMatrixProduct(Matrix m) {
         if (m.getNumColumns() != 2) {
-            throw new ArithmeticException("Failed Matrix Product with 2x2 on left");
+            throw new WrongDimensionException("Failed Matrix Product with 2x2 on left");
         }
         //Gets vectors needed to create new matrix
         Vector v1 = getVectorProduct(m.getColumn(1));

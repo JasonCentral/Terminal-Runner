@@ -83,6 +83,8 @@ public class Vector {
     public boolean equals(Object obj) {
         if (!(obj instanceof Vector)) {
             return false;
+        } else if (((Vector) obj).getNumRows() != numRows) {
+            return false;
         } else {
             Vector v = (Vector) obj;
             for (int i = 1; i <= v.getNumRows(); i++) {
@@ -92,5 +94,15 @@ public class Vector {
             }
             return true;
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("");
+        for (int i = 0; i < numRows; i++) {
+            s.append(values.get(i));
+            s.append("\n");
+        }
+        return s.toString().trim();
     }
 }

@@ -1,5 +1,7 @@
 package com.visionvow.terminal_run.linear;
 
+import com.visionvow.terminal_run.exceptions.*;
+
 public interface Matrix {
     /**
      * Returns whether this matrix can perform a Matrix Vector product with a vector
@@ -14,7 +16,7 @@ public interface Matrix {
      *
      * @param v The initial vector
      * @return The resulting vector
-     * @throws ArithmeticException If the vector fails to be multiplied
+     * @throws WrongDimensionException If the matrix fails to perform a matrix vector product
      */
     Vector getVectorProduct(Vector v);
 
@@ -23,7 +25,7 @@ public interface Matrix {
      *
      * @param m The matrix which is to be the left matrix
      * @return The matrix after performing a left product with m
-     * @throws ArithmeticException If a left matrix product cannot be performed
+     * @throws WrongDimensionException If a left matrix product cannot be performed
      */
     Matrix leftMatrixProduct(Matrix m);
 
@@ -32,7 +34,7 @@ public interface Matrix {
      *
      * @param m The matrix which is to be the right matrix
      * @return The matrix after performing a right product with m
-     * @throws ArithmeticException If a left matrix product cannot be performed
+     * @throws WrongDimensionException If a left matrix product cannot be performed
      */
     Matrix rightMatrixProduct(Matrix m);
 
@@ -70,7 +72,7 @@ public interface Matrix {
      * Returns the inverse of this matrix
      *
      * @return The inverse
-     * @throws ArithmeticException If this matrix is not invertible
+     * @throws NotInvertibleException If this matrix is not invertible
      */
     Matrix getInverse();
 
