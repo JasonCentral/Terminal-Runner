@@ -6,32 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/relativelayout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:gravity="center"
-        >
+        android:gravity="center">
 
         <ImageView
-        android:id="@+id/start_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/orange_rectangle"
-        android:layout_gravity="center"
-        android:layout_marginBottom="100dp"
-        >
-    </ImageView>
+            android:id="@+id/start_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="100dp"
+            android:src="@drawable/orange_rectangle"
+            android:elevation="9dp"
+            android:background="@drawable/rect_shadow1"
+            />
 
         <TextView
-            android:id="@+id/myImageViewText"
+            android:id="@+id/start_text"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/start_button"
+            android:layout_alignEnd="@id/start_button"
             android:layout_alignStart="@id/start_button"
             android:layout_alignTop="@id/start_button"
-            android:layout_alignEnd="@id/start_button"
-            android:layout_alignBottom="@id/start_button"
+            android:elevation="10dp"
             android:layout_margin="1dp"
             android:gravity="center"
             android:text="@string/start_text"
