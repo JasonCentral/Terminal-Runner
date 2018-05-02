@@ -104,12 +104,12 @@ public class SquareMatrixThree implements Matrix {
     @Override
     public double getDeterminant() {
         //Find determinant by co-factor along first column
-        SquareMatrixTwo A11 = new SquareMatrixTwo(values[2][2], values[2][3],
-                values[3][2], values[3][3]);
-        SquareMatrixTwo A21 = new SquareMatrixTwo(values[1][2], values[1][3],
-                values[3][2], values[3][3]);
-        SquareMatrixTwo A31 = new SquareMatrixTwo(values[1][2], values[1][3],
-                values[2][2], values[2][3]);
+        SquareMatrixTwo A11 = new SquareMatrixTwo(values[1][1], values[1][2],
+                values[2][1], values[2][2]);
+        SquareMatrixTwo A21 = new SquareMatrixTwo(values[0][1], values[0][2],
+                values[2][1], values[2][2]);
+        SquareMatrixTwo A31 = new SquareMatrixTwo(values[0][1], values[0][2],
+                values[1][1], values[1][2]);
         return (values[0][0] * A11.getDeterminant() - values[1][0] * A21.getDeterminant() +
                 values[2][0] * A31.getDeterminant());
     }
@@ -186,5 +186,16 @@ public class SquareMatrixThree implements Matrix {
     @Override
     public Matrix leftMatrixProduct(Matrix m) {
         return m.rightMatrixProduct(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof SquareMatrixThree)) {
+            return false;
+        } else {
+            SquareMatrixThree m = (SquareMatrixThree) obj;
+            return getColumn(1).equals(m.getColumn(1)) && getColumn(2) == m.getColumn(2)
+                    && getColumn(3).equals(m.getColumn(3));
+        }
     }
 }

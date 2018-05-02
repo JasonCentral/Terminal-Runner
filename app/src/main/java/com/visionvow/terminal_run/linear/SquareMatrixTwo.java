@@ -111,4 +111,15 @@ public class SquareMatrixTwo implements Matrix {
     public Matrix leftMatrixProduct(Matrix m) {
         return m.rightMatrixProduct(this);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof SquareMatrixTwo)){
+            return false;
+        }
+        else{
+            SquareMatrixTwo m = (SquareMatrixTwo)obj;
+            return getColumn(1).equals(m.getColumn(1)) && getColumn(2) == m.getColumn(2);
+        }
+    }
 }

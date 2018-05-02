@@ -8,7 +8,7 @@ public class Vector {
 
     /**
      * Create a vector in whichever dimension you want
-      *
+     *
      * @param values Each value corresponds to the next row
      */
     public Vector(double... values) {
@@ -36,5 +36,20 @@ public class Vector {
      */
     public double getRow(int r) {
         return values.get(r - 1);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Vector)) {
+            return false;
+        } else {
+            Vector v = (Vector) obj;
+            for (int i = 1; i <= v.getNumRows(); i++) {
+                if (getRow(i) != v.getRow(i)) {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

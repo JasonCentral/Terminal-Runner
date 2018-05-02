@@ -82,4 +82,6 @@ public interface Matrix {
      * @throws IndexOutOfBoundsException If the column is not in range
      */
     Vector getColumn(int c);
+
+
 }
