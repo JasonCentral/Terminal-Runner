@@ -6,6 +6,11 @@ public class Vector {
     private int numRows;
     private ArrayList<Double> values;
 
+    /**
+     * Create a vector in whichever dimension you want
+      *
+     * @param values Each value corresponds to the next row
+     */
     public Vector(double... values) {
         this.values = new ArrayList<>();
         for (double value : values) {

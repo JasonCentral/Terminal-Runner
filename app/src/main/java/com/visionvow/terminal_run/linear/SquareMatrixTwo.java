@@ -99,7 +99,7 @@ public class SquareMatrixTwo implements Matrix {
     @Override
     public SquareMatrixTwo rightMatrixProduct(Matrix m) {
         if (m.getNumColumns() != 2) {
-            throw new ArithmeticException("Right Product Failed");
+            throw new ArithmeticException("Failed Matrix Product with 2x2 on left");
         }
         //Gets vectors needed to create new matrix
         Vector v1 = getVectorProduct(m.getColumn(1));
