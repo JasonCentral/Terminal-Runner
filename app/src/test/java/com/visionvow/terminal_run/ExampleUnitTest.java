@@ -23,7 +23,11 @@ public class ExampleUnitTest {
         Vector v2 = new Vector(2, 9, 2);
         Vector v3 = new Vector(1, -2, 1);
         SquareMatrixThree testThree = new SquareMatrixThree(v1, v2, v3);
+        SquareMatrixThree identity = new SquareMatrixThree(1,0,1,0,1,0,0,0,1);
 
         assertEquals(testThree.getDeterminant(), 13, 0);
+
+        System.out.println(testThree.rightMatrixProduct(identity).getColumn(2));
+        System.out.println(testThree.leftMatrixProduct(identity).getColumn(2));
     }
 }
