@@ -26,12 +26,12 @@ public class SquareMatrixTwo implements Matrix {
     /**
      * Constructs a 2 by 2 square matrix with two vectors in R^2
      *
-     * @param v1 The first vector in R^22, to make the first column
+     * @param v1 The first vector in R^2, to make the first column
      * @param v2 The second vector in R^2, to make the second column
      * @throws WrongDimensionException If either of the vectors are not in R^2
      */
     public SquareMatrixTwo(Vector v1, Vector v2) {
-        if (v1.getNumRows() != 2 || v2.getNumRows() != 2){
+        if (v1.getNumRows() != 2 || v2.getNumRows() != 2) {
             throw new WrongDimensionException();
         }
         this.a = v1.getRow(1);
@@ -87,13 +87,11 @@ public class SquareMatrixTwo implements Matrix {
 
     @Override
     public Vector getColumn(int c) {
-        if (c == 1){
-            return  new Vector(this.a, this.c);
-        }
-        else if (c == 2){
+        if (c == 1) {
+            return new Vector(this.a, this.c);
+        } else if (c == 2) {
             return new Vector(this.b, this.c);
-        }
-        else{
+        } else {
             throw new IndexOutOfBoundsException("Column " + c + " does not exist.");
         }
     }
@@ -116,11 +114,10 @@ public class SquareMatrixTwo implements Matrix {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof SquareMatrixTwo)){
+        if (!(obj instanceof SquareMatrixTwo)) {
             return false;
-        }
-        else{
-            SquareMatrixTwo m = (SquareMatrixTwo)obj;
+        } else {
+            SquareMatrixTwo m = (SquareMatrixTwo) obj;
             return getColumn(1).equals(m.getColumn(1)) && getColumn(2) == m.getColumn(2);
         }
     }
