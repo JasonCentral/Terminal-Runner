@@ -6,4 +6,5 @@
     <color name="colorAccent">#F94966</color>
     <color name="colorMaterial">#FBC03B</color>
     <color name="colorOutlineOrange">#B26A03</color>
+    <color name="colorGameBack">#40CE1C</color>
 </resources>

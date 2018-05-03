@@ -3,20 +3,34 @@ package com.visionvow.terminal_run.listeners;
 import android.content.Intent;
 import android.view.View;
 
+import com.visionvow.terminal_run.GameActivity;
+import com.visionvow.terminal_run.MainActivity;
+
 public class ChangeScreenListener implements View.OnClickListener {
-    private String screenToChange;
+    private int screenToChange;
 
     /**
      * Creates a change screen listener to change to some screen
      *
-     * @param screenToChange The xml name of the layout to change to
+     * @param screenToChange  1 for main screen, 2 for game screen, ... to be cont.
      */
-    public ChangeScreenListener(String screenToChange) {
+    public ChangeScreenListener(int screenToChange) {
         this.screenToChange = screenToChange;
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent();
+        Intent intent;
+        switch (screenToChange) {
+            case 1:
+                intent = new Intent(v.getContext(), MainActivity.class);
+                break;
+            case 2:
+                intent = new Intent(v.getContext(), GameActivity.class);
+                break;
+            default:
+                intent = new Intent();
+        }
+        v.getContext().startActivity(intent);
     }
 }

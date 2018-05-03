@@ -15,8 +15,6 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        ImageView startButton = findViewById(R.id.start_button);
-//        startButton.setOnClickListener(new ChangeScreenListener("TOO"));
 
         View decorView = getWindow().getDecorView();
         // Hide the status bar.
@@ -25,5 +23,15 @@ public class MainActivity extends FragmentActivity {
         decorView.setSystemUiVisibility(uiOptions);
 
         setContentView(R.layout.activity_main);
+
+        setButtonProperties();
+    }
+
+    /**
+     * Sets button properties in the main screen
+     */
+    private void setButtonProperties(){
+        ImageView startButton = findViewById(R.id.start_button);
+        startButton.setOnClickListener(new ChangeScreenListener(2));
     }
 }
